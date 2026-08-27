@@ -1,0 +1,105 @@
+<div class="site-shell">
+  <nav class="nav-bar" aria-label="Resume navigation">
+    <a class="brand" href="#inicio" aria-label="Go to the top"><span>JV</span><strong>Juan Jesús</strong></a>
+    <div class="nav-links">
+      <a href="#perfil">Profile</a><a href="#proyectos">Projects</a><a href="#experiencia">Experience</a><a href="#educacion">Education</a><a href="#certificaciones">Certifications</a><a href="#habilidades">Skills</a><a href="#contacto">Contact</a>
+    </div>
+    <a class="nav-cta" [href]="'mailto:' + perfil.email">Let's talk <span aria-hidden="true">↗</span></a>
+  </nav>
+
+  <main>
+    <section id="inicio" class="hero section-wrap">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot"></span> Web resume · Open to opportunities</p>
+        <h1>{{ perfil.nombre }}</h1>
+        <p class="hero-role">{{ perfil.titulo }}</p>
+        <p class="hero-intro">{{ perfil.resumen }}</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#proyectos">Explore my work <span aria-hidden="true">↓</span></a>
+          <a class="button button-quiet" [href]="perfil.github" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="hero-mark" aria-hidden="true">
+        <div class="mark-ring"></div>
+        <span>JV</span>
+        <small>COMPUTER SYSTEMS<br>ENGINEERING STUDENT</small>
+      </div>
+    </section>
+
+    <div class="quick-facts section-wrap">
+      <div><strong>04</strong><span>selected projects</span></div><div><strong>07th</strong><span>engineering semester</span></div><div><strong>∞</strong><span>curiosity to learn</span></div>
+    </div>
+
+    <section id="perfil" class="content-section section-wrap">
+      <div class="section-label">01 / Profile</div>
+      <div class="section-content profile-grid">
+        <div><h2>Building systems<br><em>that make sense.</em></h2></div>
+        <div class="profile-text">
+          <p>{{ perfil.resumen }}</p>
+          <div class="contact-line"><span>Based in</span><strong>{{ perfil.ubicacion }}</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="proyectos" class="content-section section-wrap">
+      <div class="section-label">02 / Projects</div>
+      <div class="section-heading"><h2>Selected work</h2><p>Academic projects turned into functional systems.</p></div>
+      <div class="project-grid">
+        <article class="project-card" *ngFor="let p of proyectos; let i = index">
+          <div class="project-top"><span class="project-number">0{{ i + 1 }}</span><span class="badge">{{ p.tipo }}</span></div>
+          <h3>{{ p.titulo }}</h3>
+          <p>{{ p.descripcion }}</p>
+          <ul><li *ngFor="let det of p.detalles">{{ det }}</li></ul>
+          <div class="tags"><span class="tag" *ngFor="let tech of p.tecnologias">{{ tech }}</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="habilidades" class="content-section section-wrap">
+      <div class="section-label">06 / Skills</div>
+      <div class="section-heading"><h2>Technical skills<br><em>to solve problems.</em></h2><p>A broad technical foundation for building with intention.</p></div>
+      <div class="skills-grid">
+        <div class="skills-group" *ngFor="let h of habilidades"><h3>{{ h.categoria }}</h3><div><span class="tag" *ngFor="let item of h.items">{{ item }}</span></div></div>
+      </div>
+    </section>
+
+    <section id="experiencia" class="content-section section-wrap">
+      <div class="section-label">03 / Experience</div>
+      <div class="section-heading"><h2>Technical<br><em>experience.</em></h2><p>Applied practice in software development and distributed systems.</p></div>
+      <div class="timeline">
+        <article class="timeline-item" *ngFor="let item of experiencia">
+          <span class="timeline-marker"></span>
+          <div><h3>{{ item.titulo }}</h3><p class="timeline-org">{{ item.organizacion }}</p><p>{{ item.descripcion }}</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="educacion" class="content-section section-wrap">
+      <div class="section-label">04 / Education</div>
+      <div class="section-heading"><h2>Academic<br><em>background.</em></h2><p>Ongoing preparation in engineering and computing technologies.</p></div>
+      <div class="education-list">
+        <article class="education-item" *ngFor="let item of formacion">
+          <div class="education-icon">UAA</div>
+          <div><h3>{{ item.titulo }}</h3><p>{{ item.institucion }}</p></div>
+          <span>{{ item.estado }}</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="certificaciones" class="content-section section-wrap">
+      <div class="section-label">05 / Certifications</div>
+      <div class="section-heading"><h2>Professional<br><em>credentials.</em></h2><p>Verified training in low-code application development.</p></div>
+      <div class="certification-list">
+        <article class="certification-note" *ngFor="let item of certificaciones"><div class="certification-icon">M</div><div><strong>{{ item.titulo }}</strong><span>{{ item.descripcion }}</span></div><small>{{ item.emisor }}</small></article>
+      </div>
+    </section>
+
+    <section id="contacto" class="contact-section section-wrap">
+      <div class="section-label">07 / Contact</div>
+      <div class="contact-main"><h2>Let's build something<br><em>useful.</em></h2><a class="contact-email" [href]="'mailto:' + perfil.email">{{ perfil.email }} <span aria-hidden="true">↗</span></a></div>
+      <div class="contact-meta"><span>{{ perfil.ubicacion }}</span><a [href]="perfil.github" target="_blank" rel="noopener">GitHub ↗</a></div>
+    </section>
+  </main>
+
+  <footer class="footer section-wrap"><span>© 2026 Juan Jesús Vázquez Martín del Campo · Web Resume</span><a href="#inicio">Back to top ↑</a></footer>
+</div>
